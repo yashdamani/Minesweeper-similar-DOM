@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Practice</title>
+</head>
+<body>
+	<script>
+		function table() {
+	    	var clickData = 0;
+			var counter = 1;
+			var table = document.createElement("table");
+			var tableBody = document.createElement("tbody");
+			var counter = 1;
+			for (var i = 0; i < 10; i++) {
+	    		var tableRow = document.createElement("tr");
+				for(var j = 0; j < 10; j++) {
+	    			var tableColumn = document.createElement("td");
+	    			var tableData = document.createTextNode(counter);
+	    			tableColumn.style.width = "25px";
+	    			tableColumn.style.height = "25px";
+	    			counter++;
+					tableRow.appendChild(tableColumn);
+					tableColumn.appendChild(tableData);
+				}
+	    		tableBody.appendChild(tableRow);
+	    	}
+
+			table.appendChild(tableBody);
+	    	document.body.appendChild(table);
+	    	table.setAttribute("border", "2px solid");
+	    	table.style.width = "300px";
+	    	table.align = "center";
+
+	    	var data = document.getElementsByTagName("td");
+			for(var k = 0; k < data.length; k++){
+	    		data[k].setAttribute("id", k+1);
+	    		data[k].align = "center";
+	    	}
+
+	    	window.onclick = e => {
+		    	if(e.target.tagName == "TD" && e.target.tagName.id != "undefined"){
+		    		clickData = parseInt(e.target.innerHTML);
+		    		for(var i=0; i<data.length; i++){
+		    			if(parseInt(data[i].innerHTML) % clickData == 0){
+		    				e.target.innerHTML = '';
+		    				data[i].innerHTML = '';
+		    			}
+		    			else{
+		    				e.target.innerHTML = '';
+		    			}
+		    		}
+		    	}
+			}
+	    }
+		table();
+	</script>
+</body>
+</html>
